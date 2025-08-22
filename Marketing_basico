@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marketing de Influência — Conceitos, Estratégias e Tendências</title>
+<style>
+  :root{
+    /* Paleta LIGHT */
+    --aqua-strong:#00ffff;
+    --aqua-soft:#E8FFFF;
+    --teal:#0f766e;
+    --navy:#0b3d91;
+    --coral:#ff7f50;
+    --slate:#0f172a;
+    --card:#ffffffee;
+    --muted:#0f172a99;
+    --radius:18px;
+    --shadow:0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    --ring:#00ffff66;
+    --border-soft:#ffffffaa;
+    --panel-grad-1:#ffffffee;
+    --panel-grad-2:#f7ffffee;
+  }
+
+  /* MODO ESCURO */
+  body.dark{
+    --aqua-strong:#00e5ff;
+    --aqua-soft:#0b1220;
+    --teal:#26d9b5;
+    --navy:#9db4ff;
+    --coral:#ffb703;
+    --slate:#e7ecff;
+    --card:#0f1629cc;
+    --muted:#c9d4ff99;
+    --border-soft:#4f46e5aa;
+    --panel-grad-1:#0f1629ee;
+    --panel-grad-2:#0b1022ee;
+    --ring:#59f5ff66;
+  }
+
+  /* MODO NOITE ROXA (Cyberpunk) */
+  body.purple{
+    --aqua-strong:#ff00ff;
+    --aqua-soft:#2b0033;
+    --teal:#ff77ff;
+    --navy:#a500ff;
+    --coral:#ff5fd1;
+    --slate:#f3e8ff;
+    --card:#3a0a4dcc;
+    --muted:#e0c0ff;
+    --border-soft:#9d4edd88;
+    --panel-grad-1:#3a0a4dcc;
+    --panel-grad-2:#6a00ffcc;
+    --ring:#d8b4fe66;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
+    color:var(--slate);
+    line-height:1.6;
+    background:
+      radial-gradient(1200px 800px at 10% -10%, var(--aqua-strong) 0%, transparent 40%),
+      radial-gradient(1200px 800px at 110% 10%, #b3ffff 0%, transparent 40%),
+      var(--aqua-soft);
+    background-attachment: fixed;
+    transition: background .7s ease, color .4s ease;
+    scroll-behavior:smooth;
+  }
+
+  /* MODO ESCURO background */
+  body.dark{
+    background:
+      radial-gradient(1100px 700px at -10% -10%, #1b265a 0%, transparent 45%),
+      radial-gradient(900px 600px at 120% 0%, #2a0f5a 0%, transparent 45%),
+      radial-gradient(700px 500px at 50% 120%, #004d61 0%, transparent 40%),
+      linear-gradient(160deg, #090e1a, #0b1220 60%, #090e1a);
+  }
+
+  /* MODO NOITE ROXA background */
+  body.purple{
+    background: linear-gradient(-45deg, #2b0033, #4a0078, #9d00ff, #4a0078);
+    background-size: 400% 400%;
+    animation: purpleGradient 15s ease infinite;
+  }
+  @keyframes purpleGradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  /* Header e menu */
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:saturate(150%) blur(8px);
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .wrap{ max-width:1100px; margin:0 auto; padding:16px 20px; }
+  nav{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-weight:800; letter-spacing:.2px; color:var(--navy);
+  }
+  .dot{ width:10px; height:10px; border-radius:50%; background:var(--aqua-strong); box-shadow:0 0 0 4px #00ffff33; }
+
+  .menu{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .menu a{
+    text-decoration:none; color:var(--navy); font-weight:600; padding:10px 14px;
+    border-radius:999px; border:1px solid #0b3d9115; background:#ffffffcc;
+    transition:transform .2s ease, box-shadow .2s ease, background .3s ease;
+  }
+  .menu a:hover{ transform:translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.10),0 2px 6px rgba(0,0,0,.06); }
+  body.dark .menu a{ background:#111936cc; border-color:#ffffff10; color:var(--navy); }
+  body.purple .menu a{ background: rgba(58,10,77,.85); border-color:var(--purple-accent); color:var(--purple-accent); }
+
+  /* Botão toggle */
+  .toggle{
+    display:flex; align-items:center; gap:10px;
+    border:none; border-radius:999px; padding:6px 12px; cursor:pointer;
+    font-weight:800;
+    background: linear-gradient(180deg, var(--aqua-strong), color-mix(in srgb, var(--aqua-strong), #fff 60%));
+    color:#023047; box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    transition: all .4s ease;
+  }
+  .toggle:hover{ transform: translateY(-1px); }
+
+  /* Hero/Painéis */
+  .hero{ padding:48px 20px 14px; }
+  .panel{
+    background: linear-gradient(160deg, var(--panel-grad-1), var(--panel-grad-2));
+    border:1px solid var(--border-soft);
+    border-radius: calc(var(--radius) + 6px);
+    padding: 22px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    transition: background .6s ease, border-color .6s ease;
+  }
+
+  .super{ color:var(--teal); font-weight:800; letter-spacing:.6px; text-transform:uppercase; font-size:.86rem; }
+  h1{ margin:.4rem 0 0.6rem; font-size: clamp(1.6rem, 2.6vw + 1rem, 2.6rem); color:var(--navy); line-height:1.15; text-wrap:balance; }
+  .lead{ color:var(--muted); max-width:72ch; }
+
+  /* Grid/Cards */
+  .grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); margin-top:18px; }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    padding: 18px;
+    opacity:0; transform: translateY(14px) scale(.98);
+  }
+  .card h3{ margin:0 0 10px; color:var(--navy); font-size:1.12rem; display:flex; align-items:center; gap:10px; }
+
+  /* Badges */
+  .badge{
+    display:inline-block; padding:4px 10px; border-radius:999px; background: linear-gradient(180deg, #fff, #eaffff);
+    border:1px dashed var(--aqua-strong); color:var(--teal); font-weight:700; font-size:.78rem; margin-bottom:10px;
+  }
+  body.dark .badge{ background: linear-gradient(180deg, #0b1220, #0f1629); border-color:#22d3ee88; color:#22d3ee; }
+  body.purple .badge{ background: rgba(58,10,77,.85); border-color:var(--purple-accent); color:var(--purple-accent); }
+
+  /* Reveal animation */
+  .reveal{ animation: reveal .6s ease forwards; }
+  @keyframes reveal{ from{opacity:0; transform:translateY(14px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);} }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand"><span class="dot"></span> Marketing de Influência</div>
+      <div class="menu">
+        <a href="#conceitos">Conceitos & Estratégias</a>
+        <a href="#impactos">Impactos & Tendências</a>
+        <a href="#tipos">Tipos de Influenciadores</a>
+        <a href="#metricas">Métricas & Avaliação</a>
+        <button id="themeToggle" class="toggle" type="button"><span>🌗 Tema</span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Hero / Introdução -->
+  <section class="hero panel" id="conceitos">
+    <span class="super">Conceitos & Estratégias</span>
+    <h1>O que é Marketing de Influência?</h1>
+    <p class="lead">Marketing de influência é uma estratégia que utiliza pessoas com autoridade ou presença digital para impactar o público-alvo, diferenciando-se de outras estratégias tradicionais de marketing digital pela confiança que o influenciador estabelece.</p>
+  </section>
+
+  <!-- Tipos de influenciadores -->
+  <section class="grid" id="tipos">
+    <div class="card">
+      <span class="badge">Macro</span>
+      <h3>Macro Influenciadores</h3>
+      <p>Possuem grande alcance e muitos seguidores. Impactam campanhas de forma massiva, mas podem ter menor engajamento individual.</p>
+    </div>
+    <div class="card">
+      <span class="badge">Micro</span>
+      <h3>Micro Influenciadores</h3>
+      <p>Alcance menor, porém engajamento mais próximo e confiável com nichos específicos.</p>
+    </div>
+    <div class="card">
+      <span class="badge">Nano</span>
+      <h3>Nano Influenciadores</h3>
+      <p>Pequeno público, mas grande confiança. Ideal para comunidades muito segmentadas.</p>
+    </div>
+  </section>
+
+  <!-- Impactos e tendências -->
+  <section class="hero panel" id="impactos">
+    <span class="super">Impactos & Tendências</span>
+    <h1>Como avaliar campanhas de influência?</h1>
+    <p class="lead">As marcas devem analisar métricas como engajamento, alcance, conversão e ROI, garantindo que os influenciadores escolhidos estejam alinhados aos objetivos da campanha.</p>
+  </section>
+
+  <!-- Métricas e Avaliação -->
+  <section class="grid" id="metricas">
+    <div class="card">
+      <span class="badge">Engajamento</span>
+      <h3>Taxa de Engajamento</h3>
+      <p>Percentual de interações dos seguidores com o conteúdo postado pelo influenciador.</p>
+    </div>
+    <div class="card">
+      <span class="badge">Alcance</span>
+      <h3>Alcance Real</h3>
+      <p>Quantidade de pessoas que visualizaram a publicação, determinando visibilidade da campanha.</p>
+    </div>
+    <div class="card">
+      <span class="badge">ROI</span>
+      <h3>Retorno sobre Investimento</h3>
+      <p>Mede a efetividade da campanha em gerar vendas ou resultados desejados em relação ao investimento.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const body = document.body;
+const btn = document.getElementById('themeToggle');
+const themes = ['light','dark','purple'];
+let idx = 0;
+
+// Carrega tema salvo
+const saved = localStorage.getItem('theme');
+if(saved && themes.includes(saved)){
+  idx = themes.indexOf(saved);
+  body.classList.add(saved);
+}
+
+// Alterna temas
+btn.addEventListener('click', ()=>{
+  body.classList.remove(themes[idx]);
+  idx = (idx+1)%themes.length;
+  body.classList.add(themes[idx]);
+  localStorage.setItem('theme', themes[idx]);
+});
+
+// Reveal cards
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('reveal'); io.unobserve(e.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.panel, .card').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
